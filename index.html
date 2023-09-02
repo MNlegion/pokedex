@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Pokedex</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <h1>Pokedex</h1>
-        <p>Search for a Pokemon and view it's Pokedex entry!</p>
+      <h1>Pokedex</h1>
+      <p>Search for a Pokemon and view it's Pokedex entry!</p>
     </header>
 
-    <main>
+    <main class="flex-row justify-space-between">
+      <div class="col-12 col-md-4">
         <h3>Search By Pokemon</h3>
         <form id="pokemon-form">
-            <label for="pokemon">Pokemon</label>
-            <input type="text" name="pokemon" id="pokemon">
-            <button type="submit">Get Pokemon</button>
+          <label for="pokemon">Pokemon</label>
+          <input type="text" name="pokemon" id="pokemon" />
+          <button type="submit">Get Pokemon</button>
         </form>
+      </div>
 
-
-        <!-- Dynamic display of pokedex entries -->
-        <div class="pokedex-container">
-            <h2>Showing Pokedex Information For: </h2>
-            <!-- Create Div container for pokemon information -->
-            <div></div>
-        </div>
+      <!-- Dynamic display of pokedex entries -->
+      <div class="col-12 col-md-8">
+        <h2>Showing Pokedex Information For:</h2>
+        <!-- Create Div container for pokemon information -->
+        <div></div>
+      </div>
     </main>
-    
 
     <script src="./assets/js/index.js"></script>
-</body>
+  </body>
 </html>
