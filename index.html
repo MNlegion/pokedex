@@ -14,19 +14,21 @@
 
     <main class="flex-row justify-space-between">
       <div class="col-12 col-md-4">
-        <h3>Search By Pokemon</h3>
-        <form id="pokemon-form">
-          <label for="pokemon">Pokemon</label>
-          <input type="text" name="pokemon" id="pokemon" />
-          <button type="submit">Get Pokemon</button>
-        </form>
+        <div class="card">
+          <h3 class="card-header text-uppercase">Search By Pokemon</h3>
+          <form id="pokemon-form" class="card-body">
+            <label class="form-label" for="pokemon">Pokemon</label>
+            <input type="text" name="pokemon" id="pokemon" autofocus="true" class="form-input"/>
+            <button type="submit" class="btn">Get Pokemon</button>
+          </form>
+        </div>
       </div>
 
       <!-- Dynamic display of pokedex entries -->
       <div class="col-12 col-md-8">
-        <h2>Showing Pokedex Information For:</h2>
+        <h2>Showing Pokedex Information For: <span id="pokemon-search-term"></span></h2>
         <!-- Create Div container for pokemon information -->
-        <div></div>
+        <div id="pokedex-container"></div>
       </div>
     </main>
 
