@@ -37,7 +37,22 @@ var displayPokemon = function(pokedexEntry, searchTerm) {
         return;
     }
     
+    console.log(pokedexEntry.sprites.other.dream_world.front_default);
     pokemonSearchTerm.textContent = searchTerm;
+
+    // container to hold pokemon data
+    var containerEl = document.createElement("div");
+    containerEl.classList = "list-item flex-row justify space-beteen align-center";
+
+    // span element to hold pokemon name
+    var titleEl = document.createElement("span");
+    titleEl.textContent = searchTerm;
+
+    // append to container
+    containerEl.appendChild(titleEl);
+
+    // append container to dom
+    pokedexContainerEl.appendChild(containerEl);
 };
 
 pokemonFormEl.addEventListener("submit", formSubmitHandler);
