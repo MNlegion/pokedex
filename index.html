@@ -12,11 +12,11 @@
       <p>Search for a Pokemon and view it's Pokedex entry!</p>
     </header>
 
-    <main class="flex-row justify-space-between">
-      <div class="col-12 col-md-4">
+    <main class="">
+      <div class="">
         <div class="card">
-          <h3 class="card-header text-uppercase">Search By Pokemon</h3>
-          <form id="pokemon-form" class="card-body">
+          <h3 class="card-header">Search By Pokemon</h3>
+          <form id="user-form" class="card-body">
             <label class="form-label" for="pokemon">Pokemon</label>
             <input type="text" name="pokemon" id="pokemon" autofocus="true" class="form-input"/>
             <button type="submit" class="btn">Get Pokemon</button>
@@ -25,10 +25,12 @@
       </div>
 
       <!-- Dynamic display of pokedex entries -->
-      <div class="col-12 col-md-8">
+      <div class="">
         <h2>Showing Pokedex Information For: <span id="pokemon-search-term"></span></h2>
         <!-- Create Div container for pokemon information -->
-        <div id="pokedex-container"></div>
+        <div id="pokedex-container">
+
+        </div>
       </div>
     </main>
 
