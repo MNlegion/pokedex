@@ -63,6 +63,8 @@
 // pokemonFormEl.addEventListener("submit", formSubmitHandler);
 var userFormEl = document.querySelector("#user-form");
 var nameInputEl = document.querySelector("#pokemon");
+var pokedexContainerEl = document.querySelector("#pokedex-container");
+var pokemonSearchTerm = document.querySelector("#pokemon-search-term");
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -90,8 +92,27 @@ var getPokemon = function(pokemon) {
 };
 
 var displayPokemon = function(pokemonArr, searchTerm) {
+
+    pokedexContainerEl.textContent = "";
+    pokemonSearchTerm.textContent = searchTerm;
+
     console.log(pokemonArr);
-    console.log(searchTerm);
+
+    for (var i = 0; i < pokemonArr.length; i++) {
+        var pokedexInfo = pokemonArr[i].abilities.ability;
+
+        // create container for the pokedex entry
+        var pokedexEl = document.createElement("div");
+        pokedexEl.classList = "flex-row justify-space-between align-center";
+
+        // create span element to hold height info
+        var titleEl = document.createElement("span");
+        titleEl.textContent = pokedexInfo;
+
+        pokedexEl.appendChild(titleEl);
+
+        pokedexContainerEl.appendChild(pokedexEl);
+    }
 };
 
 userFormEl.addEventListener("submit", formSubmitHandler);
