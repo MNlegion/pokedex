@@ -61,7 +61,22 @@
 // };
 
 // pokemonFormEl.addEventListener("submit", formSubmitHandler);
+var userFormEl = document.querySelector("#user-form");
+var nameInputEl = document.querySelector("#pokemon");
 
+var formSubmitHandler = function(event) {
+    event.preventDefault();
+
+    // get value from input element
+    var pokemonName = nameInputEl.value.trim();
+
+    if (pokemonName) {
+        getPokemon(pokemonName);
+        nameInputEl.value = "";
+    } else {
+        alert("Please Enter a Pokemon!");
+    }
+};
 
 var getPokemon = function(pokemon) {
 
@@ -69,9 +84,14 @@ var getPokemon = function(pokemon) {
 
     fetch(apiUrl).then(function(response) {
         response.json().then(function(data) {
-            console.log(data.abilities[2].ability);
+            displayPokemon(data, pokemon);
         });
     });
 };
 
-getPokemon("chansey");
+var displayPokemon = function(pokemonArr, searchTerm) {
+    console.log(pokemonArr);
+    console.log(searchTerm);
+};
+
+userFormEl.addEventListener("submit", formSubmitHandler);
