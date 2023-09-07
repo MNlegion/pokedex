@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Pokedex</title>
-  </head>
-  <body>
-    <header>
-      <h1>Pokedex</h1>
-      <p>Search for a Pokemon and view it's Pokedex entry!</p>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title> Pokedex</title>
+</head>
 
-    <main class="flex-row justify-space-between">
-      <div class="col-12 col-md-4">
-        <div class="card">
-          <h3 class="card-header">Search By Pokemon</h3>
-          <form id="user-form" class="card-body">
-            <label class="form-label" for="pokemon">Pokemon</label>
-            <input type="text" name="pokemon" id="pokemon" autofocus="true" class="form-input"/>
-            <button type="submit" class="btn">Get Pokemon</button>
-          </form>
-        </div>
+<body>
+  <header class="title">
+
+  </header>
+
+  <main>
+    <div>
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search The Pokedex</h3>
+        <form id="user-form" class="card-body">
+          <label class="form-label" for="pokedexname">Pokemon Name</label>
+          <input id="pokedexname" type="text" name="pokedexname">
+          <button type="submit" class="btn">Get Pokemon</button>
+        </form>
       </div>
+    </div>
+    <h2 class="subtitle">Showing Pokedex Information For: <span id="pokedex-search-term"></span></h2>
+    <div id="pokedex-container" class="list-group"></div>
+    <div>
 
-      <!-- Dynamic display of pokedex entries -->
-      <div class="col-12 col-md-8">
-        <h2>Showing Pokedex Information For: <span id="pokemon-search-term"></span></h2>
-        <!-- Create Div container for pokemon information -->
-        <div id="pokedex-container">
+    </div>
+  </main>
 
-        </div>
-      </div>
-    </main>
-
-    <script src="./assets/js/index.js"></script>
-  </body>
+  <footer></footer>
+  <script src="./assets/js/index.js"></script>
+</body>
 </html>

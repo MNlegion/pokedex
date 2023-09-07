@@ -1,118 +1,70 @@
-// var pokemonFormEl = document.querySelector("#pokemon-form");
-// var pokemonInputEl = document.querySelector("#pokemon");
-// var pokedexContainerEl = document.querySelector("#pokedex-container");
-// var pokemonSearchTerm = document.querySelector("#pokemon-search-term");
+var userFormEl = document.getElementById("user-form");
+var pokemonInputEl = document.getElementById("pokedexname");
+var pokedexContainerEl = document.getElementById("pokedex-container");
+var pokedexSearchTerm = document.getElementById("pokedex-search-term");
 
-// var formSubmitHandler = function (event) {
-//   event.preventDefault();
+var formSubmitHandler = function (event) {
+  event.preventDefault();
 
-//   var pokemonName = pokemonInputEl.value.trim();
+  var userSearch = pokemonInputEl.value.trim();
 
-//   if (pokemonName) {
-//     getPokemon(pokemonName);
-//     pokemonInputEl.value = "";
-//   } else {
-//     alert("Please enter a Pokemon Name");
-//   }
-// };
+  if (userSearch) {
+    getPokemon(userSearch);
+    pokemonInputEl.value = "";
+  } else {
+    alert("Please enter a pokemon name!");
+  }
 
-// // logic for pokemon api calls
-
-// var getPokemon = function (pokemon) {
-//   // format the pokeapi url
-//   var apiUrl = "https://pokeapi.co/api/v2/pokemon/" + pokemon;
-
-//   // make a request to the url
-//   fetch(apiUrl).then(function (response) {
-//     response.json().then(function (data) {
-//     //   displayPokemon(data, pokemon);
-//     });
-//   });
-// };
-
-// var displayPokemon = function (pokedexEntry, searchTerm) {
-//   if (pokedexEntry.length === 0) {
-//     pokedexContainerEl.textContent = "No Pokemon Found.";
-//     return;
-//   }
-
-//   // console.log("Height: " + pokedexEntry.height + " meters");
-//   pokemonSearchTerm.textContent = searchTerm;
-
-//   for (var i = 0; i < pokedexEntry.length; i++) {
-
-//     var statsName = pokedexEntry[i];
-
-//     // container to hold pokemon data
-//     var containerEl = document.createElement("div");
-//     containerEl.classList =
-//       "list-item flex-row justify space-beteen align-center";
-
-//     // span element to hold pokemon name
-//     var titleEl = document.createElement("span");
-//     titleEl.textContent = statsName[i];
-
-//     // append to container
-//     containerEl.appendChild(titleEl);
-
-//     // append container to dom
-//     pokedexContainerEl.appendChild(containerEl);
-//   }
-// };
-
-// pokemonFormEl.addEventListener("submit", formSubmitHandler);
-var userFormEl = document.querySelector("#user-form");
-var nameInputEl = document.querySelector("#pokemon");
-var pokedexContainerEl = document.querySelector("#pokedex-container");
-var pokemonSearchTerm = document.querySelector("#pokemon-search-term");
-
-var formSubmitHandler = function(event) {
-    event.preventDefault();
-
-    // get value from input element
-    var pokemonName = nameInputEl.value.trim();
-
-    if (pokemonName) {
-        getPokemon(pokemonName);
-        nameInputEl.value = "";
-    } else {
-        alert("Please Enter a Pokemon!");
-    }
+  console.log(event);
 };
 
-var getPokemon = function(pokemon) {
+var getPokemon = function (user) {
+  var apiUrl = "https://pokeapi.co/api/v2/pokemon/" + user;
 
-    var apiUrl = "https://pokeapi.co/api/v2/pokemon/" + pokemon;
-
-    fetch(apiUrl).then(function(response) {
-        response.json().then(function(data) {
-            displayPokemon(data, pokemon);
-        });
+  fetch(apiUrl).then(function (response) {
+    response.json().then(function (data) {
+      displayPokemon(data, user);
     });
+  });
 };
 
-var displayPokemon = function(pokemonArr, searchTerm) {
+var displayPokemon = function (pokedex, searchTerm) {
+  console.log(pokedex);
+  console.log(searchTerm);
 
-    pokedexContainerEl.textContent = "";
-    pokemonSearchTerm.textContent = searchTerm;
+  pokedexContainerEl.textContent = "";
+  pokedexSearchTerm.textContent = searchTerm;
 
-    console.log(pokemonArr);
+  // for (var i = 0; i < pokedex.abilities.length; i++) {
+  //     var abilityInfo = pokedex.abilities[i];
 
-    for (var i = 0; i < pokemonArr.length; i++) {
-        var pokedexInfo = pokemonArr[i].abilities.ability;
+  //     var abilityEl = document.createElement("div");
+  //     abilityEl.classList = "list-item flex-row justify-space-between align-center";
 
-        // create container for the pokedex entry
-        var pokedexEl = document.createElement("div");
-        pokedexEl.classList = "flex-row justify-space-between align-center";
+  //     var titleEl = document.createElement("span");
+  //     titleEl.textContent = abilityInfo;
 
-        // create span element to hold height info
-        var titleEl = document.createElement("span");
-        titleEl.textContent = pokedexInfo;
+  //     abilityEl.appendChild(titleEl);
 
-        pokedexEl.appendChild(titleEl);
+  //     pokedexContainerEl.appendChild(abilityEl);
+  // }
 
-        pokedexContainerEl.appendChild(pokedexEl);
-    }
+  var abilityInfo = pokedex.base_experience;
+
+  var abilityEl = document.createElement("div");
+  abilityEl.innerText = "Base Experience: "
+  abilityEl.classList = "list-item flex-row justify-space-between align-center";
+
+  var imageEl = document.createElement("img");
+  imageEl.src = pokedex.sprites.other.dream_world.front_default;
+
+  var titleEl = document.createElement("span");
+  titleEl.textContent = abilityInfo;
+
+  abilityEl.appendChild(titleEl);
+  abilityEl.appendChild(imageEl);
+
+  pokedexContainerEl.appendChild(abilityEl);
 };
 
 userFormEl.addEventListener("submit", formSubmitHandler);
