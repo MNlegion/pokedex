@@ -35,23 +35,9 @@ var displayPokemon = function (pokedex, searchTerm) {
   pokedexContainerEl.textContent = "";
   pokedexSearchTerm.textContent = searchTerm;
 
-  // for (var i = 0; i < pokedex.abilities.length; i++) {
-  //     var abilityInfo = pokedex.abilities[i];
+  var baseExperience = pokedex.base_experience;
 
-  //     var abilityEl = document.createElement("div");
-  //     abilityEl.classList = "list-item flex-row justify-space-between align-center";
-
-  //     var titleEl = document.createElement("span");
-  //     titleEl.textContent = abilityInfo;
-
-  //     abilityEl.appendChild(titleEl);
-
-  //     pokedexContainerEl.appendChild(abilityEl);
-  // }
-
-  var abilityInfo = pokedex.base_experience;
-
-  var abilityEl = document.createElement("div");
+  var abilityEl = document.createElement("p");
   abilityEl.innerText = "Base Experience: "
   abilityEl.classList = "list-item flex-row justify-space-between align-center";
 
@@ -59,7 +45,7 @@ var displayPokemon = function (pokedex, searchTerm) {
   imageEl.src = pokedex.sprites.other.dream_world.front_default;
 
   var titleEl = document.createElement("span");
-  titleEl.textContent = abilityInfo;
+  titleEl.textContent = baseExperience + " xp";
 
   abilityEl.appendChild(titleEl);
   abilityEl.appendChild(imageEl);

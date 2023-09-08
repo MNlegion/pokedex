@@ -82,4 +82,10 @@ p {
   flex: 0 0 100%;
 }
 
+/* utility */
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
 /* media screen queries */
