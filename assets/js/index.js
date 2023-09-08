@@ -22,9 +22,16 @@ var getPokemon = function (user) {
   var apiUrl = "https://pokeapi.co/api/v2/pokemon/" + user;
 
   fetch(apiUrl).then(function (response) {
-    response.json().then(function (data) {
-      displayPokemon(data, user);
-    });
+    if (response.ok) {
+      response.json().then(function(data) {
+        displayPokemon(data, user);
+      });
+    } else {
+      alert("Error: Pokemon Not Found");
+    }
+  })
+  .catch(function(error) {
+    alert("Unable to connect to PokeApi");
   });
 };
 
