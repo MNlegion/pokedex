@@ -1,12 +1,12 @@
-var userFormEl = document.getElementById("user-form");
-var pokemonInputEl = document.getElementById("pokedexname");
-var pokedexContainerEl = document.getElementById("pokedex-container");
-var pokedexSearchTerm = document.getElementById("pokedex-search-term");
+let userFormEl = document.getElementById("user-form");
+let pokemonInputEl = document.getElementById("pokedexname");
+let pokedexContainerEl = document.getElementById("pokedex-container");
+let pokedexSearchTerm = document.getElementById("pokedex-search-term");
 
-var formSubmitHandler = function (event) {
+let formSubmitHandler = function (event) {
   event.preventDefault();
 
-  var userSearch = pokemonInputEl.value.trim();
+  let userSearch = pokemonInputEl.value.trim();
 
   if (userSearch) {
     getPokemon(userSearch);
@@ -18,8 +18,8 @@ var formSubmitHandler = function (event) {
   console.log(event);
 };
 
-var getPokemon = function (user) {
-  var apiUrl = "https://pokeapi.co/api/v2/pokemon/" + user;
+let getPokemon = function (user) {
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/" + user;
 
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
@@ -35,23 +35,23 @@ var getPokemon = function (user) {
   });
 };
 
-var displayPokemon = function (pokedex, searchTerm) {
+let displayPokemon = function (pokedex, searchTerm) {
   console.log(pokedex);
   console.log(searchTerm);
 
   pokedexContainerEl.textContent = "";
   pokedexSearchTerm.textContent = searchTerm;
 
-  var baseExperience = pokedex.base_experience;
+  let baseExperience = pokedex.base_experience;
 
-  var abilityEl = document.createElement("p");
+  let abilityEl = document.createElement("p");
   abilityEl.innerText = "Base Experience: "
   abilityEl.classList = "list-item flex-row justify-space-between align-center";
 
-  var imageEl = document.createElement("img");
+  let imageEl = document.createElement("img");
   imageEl.src = pokedex.sprites.other.dream_world.front_default;
 
-  var titleEl = document.createElement("span");
+  let titleEl = document.createElement("span");
   titleEl.textContent = baseExperience + " xp";
 
   abilityEl.appendChild(titleEl);
